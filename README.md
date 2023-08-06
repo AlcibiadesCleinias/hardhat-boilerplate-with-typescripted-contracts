@@ -9,6 +9,53 @@ This project is intended to be used with the
 able to follow it by yourself by reading the README and exploring its
 `contracts`, `tests`, `scripts` and `frontend` directories.
 
+# Additional Feature
+Additional to the first example that discussed in [Hardhat Beginners Tutorial](https://hardhat.org/tutorial) 
+mentioned above.
+
+- [x] support env
+- [x] support ts
+- [x] deploy pkg ci
+- [ ] migrate to pnpm
+- [x] npm package
+- [x] add ci tests
+
+# Typechain-types for Contracts
+When typechain types integrated into Hardhat it allows you to use in hardhat scripts the next pattern:
+
+```typescript
+// E.g. inside scripts/deploy.ts.
+import {Token} from "../typechain-types";
+const token = await Token.deploy() as Token;
+```
+
+**Warn**
+> When you run Hardhat scripts, e.g. `npx hardhat run scripts`, you allow hardhat runtime to firstly compile 
+typechain types of your contracts and then run your scripts, but for a Hardhat tasks it is not the same. 
+
+Thus, it is highly recommended running `npx hardhat run typechain` before running the Hardhat task.
+
+# Frontend Integration
+TL;DR: 
+
+Suppose that the actual frontend needs to be used via NPM package (e.g. public registry.npmjs.org),
+and even with help of predefined special backend-for-frontend class (e.g. ContractClient class).
+
+But for some reasons, e.g. hackathons, it will be faster and simple to debug with local frontend app 
+(i.e. in the same repo) with typechain types and contract address file injection, e.g. [example frontend](frontend), 
+where typechain-types and contract address is accessible. 
+
+Both variants of the usage will be discussed below.
+
+## Mono-repo
+**in progress...**
+
+[frontend](frontend) in progress: should be replaced with ReactAppp on TS example
+
+## Package Integration
+
+[comment]: <> (In [package README.md]&#40;packages/zkturk-contract-artifacts/README.md&#41; all info collected on how to work in a real )
+
 ## Quick start
 
 The first things you need to do are cloning this repository and installing its
@@ -20,6 +67,9 @@ cd hardhat-boilerplate
 npm install
 ```
 
+In the repo demonstration Hardhat scripts and tasks preserved. 
+Below is ste-by-step flow about the iteratction with the features. 
+
 Once installed, let's run Hardhat's testing network:
 
 ```sh
@@ -30,7 +80,14 @@ Then, on a new terminal, go to the repository's root folder and run this to
 deploy your contract:
 
 ```sh
-npx hardhat run scripts/deploy.js --network localhost
+npx hardhat run scripts/deploy.ts --network localhost
+```
+
+To check that hardhat task, [faucet.ts](tasks/faucet.ts), will transfer 1 eth 
+to provided address from **already deployed** contract, run the next command:
+
+```sh
+ npx hardhat faucet 0x795a04d0F74e892c452bB45747dFFdcDA286FBE7 --network localhost
 ```
 
 Finally, we can run the frontend with:

@@ -1,7 +1,9 @@
 // This is a script for deploying your contracts. You can adapt it to deploy
 // yours, or create new ones.
 
-const path = require("path");
+import {artifacts, ethers, network} from "hardhat";
+import * as path from "path";
+import {Token} from "../typechain-types";
 
 async function main() {
   // This is just a convenience check
@@ -23,7 +25,7 @@ async function main() {
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
   const Token = await ethers.getContractFactory("Token");
-  const token = await Token.deploy();
+  const token = await Token.deploy() as Token;
   await token.deployed();
 
   console.log("Token address:", token.address);
@@ -40,15 +42,19 @@ function saveFrontendFiles(token) {
     fs.mkdirSync(contractsDir);
   }
 
+  const contractAddressFile = 'contract-address.json'
+  console.log("Write contract address to " + contractAddressFile + "...")
   fs.writeFileSync(
-    path.join(contractsDir, "contract-address.json"),
+    path.join(contractsDir, contractAddressFile),
     JSON.stringify({ Token: token.address }, undefined, 2)
   );
 
   const TokenArtifact = artifacts.readArtifactSync("Token");
 
+  const contractArtifactsFile = 'Token.json'
+  console.log("Write contract artifacts to " + contractArtifactsFile + "...")
   fs.writeFileSync(
-    path.join(contractsDir, "Token.json"),
+    path.join(contractsDir, contractArtifactsFile),
     JSON.stringify(TokenArtifact, null, 2)
   );
 }
