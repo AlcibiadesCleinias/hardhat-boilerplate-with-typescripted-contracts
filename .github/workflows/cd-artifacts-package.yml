@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  release:
+  release-patch:
     runs-on: ubuntu-latest
     steps:
       # Checkout project repository
