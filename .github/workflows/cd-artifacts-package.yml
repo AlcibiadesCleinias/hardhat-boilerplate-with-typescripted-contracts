@@ -47,12 +47,8 @@ jobs:
       - name: Create contract artifacts and typechain types in the root.
         run: npm run compile && npm run typechain
 
-#      - name: Build javascript from typescript for package
-#        run: npx tsc
-#      after add to ts-config the following
-      #  "include": [
-      #    "frontend-clients"
-      #  ]
+      - name: Build javascript from typescript modules defined in the root tsconfig.json for the package purpose.
+        run: npx tsc
 
       - name: Git configuration
         run: |

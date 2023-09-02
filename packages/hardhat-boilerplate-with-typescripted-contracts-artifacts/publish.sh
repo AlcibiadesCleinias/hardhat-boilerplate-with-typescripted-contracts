@@ -20,13 +20,9 @@ fi
 rm -fr ./dist
 mkdir ./dist
 
-# Uncomment below if all typechain types of contracts needed.
-echo "Copy typechain types from the root..."
-cp -r ../../typechain-types ./dist/typechain-types
-
 #echo "Copy compiled frontend-clients dist from the root..."
-#cp -r ../../frontend-clients-dist/frontend-clients ./dist
-#cp -r ../../frontend-clients-dist/typechain-types ./dist
+cp -r ../../frontend-clients-dist/frontend-clients ./dist
+cp -r ../../frontend-clients-dist/typechain-types ./dist
 
 echo "Copy contract artifacts (without dbg.json) from the root..."
 cp -r ../../artifacts/contracts/ ./dist/contracts
