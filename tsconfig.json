@@ -9,5 +9,8 @@
     "skipLibCheck": true,           /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently */
     "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "frontend-clients"
+  ]
 }

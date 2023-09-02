@@ -17,12 +17,31 @@ Script code that you may run with `ts-node <script.ts>` is below:
 import {Token} from "hardhat-boilerplate-with-typescripted-contracts-artifacts/dist/typechain-types";
 import {ethers} from "ethers";
 // For the line below "resolveJsonModule": true policy should be used.
-import ZkTurkArtifacts from "hardhat-boilerplate-with-typescripted-contracts-artifacts/dist/contracts/ZkTurk.sol/ZkTurk.json";
+import ZkTurkArtifacts
+    from "hardhat-boilerplate-with-typescripted-contracts-artifacts/dist/contracts/ZkTurk.sol/ZkTurk.json";
+import {
+    TokenContractClient
+} from "hardhat-boilerplate-with-typescripted-contracts-artifacts/dist/frontend-clients/TokenContractClient";
 
 // ZkTurk contract deployed address (You should know the address).
 const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
 // Hardhat network localhost (You should have node available on rpc).
 const rpcProviderUrl = "http://localhost:8545"
+
+async function workWithFrontendClientExample() {
+    // Bad example of how to use wallet from a private key.
+    const privateKeyFoo = "0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d"  // From Hardhat network.
+    const provider = new ethers.providers.JsonRpcProvider(rpcProviderUrl)  // harhdat localhost
+    const signer = new ethers.Wallet(privateKeyFoo, provider);
+
+    // RM ts-ignore if uses real frontend provider, like commented below:
+    // const provider = new ethers.providers.Web3Provider(window.ethereum);
+    // const signer = provider.getSigner()
+    // @ts-ignore
+    const client = new TokenContractClient(signer, ZkTurkArtifacts.abi, contractAddress)
+
+    console.log('client.transfer()', await client.transfer('0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199', 1))
+}
 
 
 async function workWithContractExample() {
@@ -40,8 +59,8 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
+    console.error(error);
+    process.exitCode = 1;
 });
 ```
 
@@ -66,8 +85,7 @@ main().catch((error) => {
 ```
   "dependencies": {
     "ts-node": "^10.9.1",
-    "typescript": "^5.1.6",
-    "zkturk-contract-artifacts": "^0.0.7"
+    "typescript": "^5.1.6"
   },
   "devDependencies": {
     "@types/node": "^20.4.0"
