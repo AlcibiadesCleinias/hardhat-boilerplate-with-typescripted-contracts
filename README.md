@@ -9,6 +9,19 @@ This project is intended to be used with the
 able to follow it by yourself by reading the README and exploring its
 `contracts`, `tests`, `scripts`, `tasks`, and `frontend` directories.
 
+# Agenda
+* [Feature](#feature)
+   * [Additional Feature](#additional-feature)
+      * [Typechain-types for Contracts](#typechain-types-for-contracts)
+* [Frontend Integration](#frontend-integration)
+   * [In-Frontend Artifacts Injection](#in-frontend-artifacts-injection)
+   * [Package Integration](#package-integration)
+* [Quick start](#quick-start)
+* [User Guide](#user-guide)
+* [Troubleshooting](#troubleshooting)
+* [Setting up your editor](#setting-up-your-editor)
+* [Getting help and updates](#getting-help-and-updates)
+
 # Feature
 
 This repository uses our recommended hardhat setup, by using our [`@nomicfoundation/hardhat-toolbox`](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox). When you use this plugin, you'll be able to:
