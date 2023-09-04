@@ -9,3 +9,7 @@ typechain-types/
 
 .env
 *frontend-clients-dist/
+
+# Coverage
+coverage.json
+coverage

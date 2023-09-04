@@ -4,6 +4,7 @@
 import {artifacts, ethers, network} from "hardhat";
 import * as path from "path";
 import {Token} from "../typechain-types";
+import {asyncRuntimeDecorator} from "./utils/asyncRuntimeDecorator";
 
 async function main() {
   // This is just a convenience check
@@ -59,9 +60,4 @@ function saveFrontendFiles(token) {
   );
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+asyncRuntimeDecorator(main)

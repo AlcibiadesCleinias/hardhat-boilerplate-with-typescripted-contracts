@@ -32,7 +32,10 @@ Additionally, to the basic **Hardhat Boilerplate**:
 - [ ] migrate to pnpm - thus, you spend less time and work with last upd of npm.
 - [x] add ci tests - thus, you show that you are concern about workable contract developments.
 - [x] demo TokenContractClient - thus, you as a "backend" developer prepare client API class for the frontend
-(api client class with accurate prepared methods, not raw contract calls).  
+(api client class with accurate prepared methods, not raw contract calls).
+- [ ] Install deployment package and use
+- [ ] add coverage report ci
+- [ ] add gas report ci
 
 
 ### Typechain-types for Contracts

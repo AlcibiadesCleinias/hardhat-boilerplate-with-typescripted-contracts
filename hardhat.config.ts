@@ -1,9 +1,13 @@
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
-import { config as dotEnvConfig } from "dotenv";
+import { HardhatUserConfig } from "hardhat/config"
+import "@nomicfoundation/hardhat-toolbox"
+import { config as dotEnvConfig } from "dotenv"
+// To work with coverage.
+import "solidity-coverage"
+// To work with eth-gas-reporter.
+import "hardhat-gas-reporter"
 // To load all available tasks you should it via manual import.
 // Thus, we imported index.ts of the ./tasks module.
-import "./tasks";
+import "./tasks"
 
 dotEnvConfig();
 
@@ -40,6 +44,9 @@ const config: HardhatUserConfig = {
       chainId: 31337,
       gasPrice: DEFAULT_GAS_PRICE,
     },
+  },
+  gasReporter: {
+    enabled: !!(process.env.REPORT_GAS),
   }
 };
 
