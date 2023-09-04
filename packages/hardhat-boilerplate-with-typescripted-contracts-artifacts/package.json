@@ -1,6 +1,6 @@
 {
   "name": "hardhat-boilerplate-with-typescripted-contracts-artifacts",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/alcibiadescleinias/hardhat-boilerplate-with-typescripted-contracts.git"
