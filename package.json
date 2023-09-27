@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NomicFoundation/hardhat-boilerplate.git"
+    "url": "git+https://github.com/AlcibiadesCleinias/hardhat-boilerplate-with-typescripted-contracts.git"
   },
-  "author": "Nomic Foundation",
+  "author": "Nomic Foundation & AlcibiadesCleinias",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/NomicFoundation/hardhat-boilerplate/issues"
   },
-  "homepage": "https://github.com/NomicFoundation/hardhat-boilerplate#readme",
+  "homepage": "https://github.com/AlcibiadesCleinias/hardhat-boilerplate-with-typescripted-contracts/blob/main/README.md",
   "devDependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
