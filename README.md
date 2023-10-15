@@ -36,19 +36,16 @@ This repository uses our recommended hardhat setup, by using our [`@nomicfoundat
 This project also includes [a sample frontend/Dapp](./frontend), which uses [Create React App](https://github.com/facebook/create-react-app).
 
 ## Additional Feature
-Additionally, to the basic **Hardhat Boilerplate**:
+Additionally, to the basic **Hardhat Boilerplate** features mentioned above.
 
-- [x] support env - thus, you could perform contract manipulation on different chains under different addresses. 
-- [x] support ts - thus, your frontend could use the typechain-types of the contracts, in moder TS env.
-- [x] deploy pkg ci - thus, you could scale your team work without missing concentration on contract development.
-- [x] npm package - as point above but mention exact NPM package registry (public). 
-- [ ] migrate to pnpm - thus, you spend less time and work with last upd of npm.
+- [x] support env - thus, you could perform contract manipulation on different chains under different addresses via related **env** settings (check [.example.env](.example.env))
+- [x] support TS - thus, your frontend could use the typechain-types of the contracts, scripts.
+- [x] npm package & deploy pkg ci - thus, you could scale your team work without missing concentration on contract development: merely push to the main branch. It uses public registry. Additional settings must be provided in [hardhat-boilerplate-with-typescripted-contracts-artifacts/package.json](packages/hardhat-boilerplate-with-typescripted-contracts-artifacts/package.json) with your naming.  
 - [x] add ci tests - thus, you show that you are concern about workable contract developments.
 - [x] demo TokenContractClient - thus, you as a "backend" developer prepare client API class for the frontend
 (api client class with accurate prepared methods, not raw contract calls).
-- [ ] Install deployment package and use
-- [ ] add coverage report ci
-- [ ] add gas report ci
+- [x] Install [hardhat-deploy](https://github.com/wighawag/hardhat-deploy) and use, - thus you no needs in deploy scripts, you could store usable contract JSON ABI artifacts with deployed address in a proven manner.
+- [ ] migrate to pnpm - thus, you spend less time and work with last upd of npm.
 
 
 ### Typechain-types for Contracts

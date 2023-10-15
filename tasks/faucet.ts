@@ -1,10 +1,9 @@
 import {task} from "hardhat/config";
-import * as fs from "fs";
-import {readFileSync} from "fs";
 import {HardhatRuntimeEnvironment} from "hardhat/types";
 
 // This file is only here to make interacting with the Dapp easier,
 // feel free to ignore it if you don't need it.
+
 
 type Args = {
     receiver: string;
@@ -22,23 +21,9 @@ task("faucet", "Sends ETH and tokens to an address")
       );
     }
 
-    const addressesFile =
-      __dirname + "/../frontend/src/contracts/contract-address.json";
+    const tokenAddress = (await hre.deployments.get('Token')).address;
 
-    if (!fs.existsSync(addressesFile)) {
-      console.error("You need to deploy your contract first");
-      return;
-    }
-
-    const addressJson = readFileSync(addressesFile, "utf-8");
-    const address = JSON.parse(addressJson);
-
-    if ((await hre.ethers.provider.getCode(address.Token)) === "0x") {
-      console.error("You need to deploy your contract first");
-      return;
-    }
-
-    const token = await hre.ethers.getContractAt("Token", address.Token);
+    const token = await hre.ethers.getContractAt("Token", tokenAddress);
     const [sender] = await hre.ethers.getSigners();
 
     const tx = await token.transfer(args.receiver, 100);
