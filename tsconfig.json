@@ -11,6 +11,12 @@
     "resolveJsonModule": true
   },
   "include": [
-    "frontend-clients"
+    "frontend-clients",
+    "hardhat.config.ts",
+    "./scripts",
+    "./deploy",
+    "./test",
+    "typechain/**/*",
+    "deployments"
   ]
 }

@@ -8,6 +8,8 @@ import "hardhat-gas-reporter"
 // To load all available tasks you should it via manual import.
 // Thus, we imported index.ts of the ./tasks module.
 import "./tasks"
+// Enable deploy.
+import "hardhat-deploy";
 
 dotEnvConfig();
 
@@ -37,6 +39,12 @@ const config: HardhatUserConfig = {
       chainId: 11155111,
       gasPrice: DEFAULT_GAS_PRICE,
     },
+    testnetMumbai: {
+      url: process.env["TESTNET_MUMBAI_RPC"] ?? "",
+      accounts: PRIVATE_KEYS,
+      chainId: 80001,
+      gasPrice: DEFAULT_GAS_PRICE,
+    },
     // For the Hardhat dev node.
     hardhatDevNode: {
       url: process.env["HARDHAT_DEV_NODE_RPC"] ?? "",
@@ -47,7 +55,12 @@ const config: HardhatUserConfig = {
   },
   gasReporter: {
     enabled: !!(process.env.REPORT_GAS),
-  }
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    }
+  },
 };
 
 export default config;

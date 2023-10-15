@@ -1,5 +1,6 @@
 import {Token} from "../typechain-types";
 import {BigNumber, ethers} from "ethers";
+import {_getDeployedContractArtifacts} from "./_getDeployedContractArtifacts";
 
 
 export class TokenContractClient {
@@ -13,14 +14,22 @@ export class TokenContractClient {
 
     constructor(
         signer: ethers.providers.JsonRpcSigner,
-        abi: any,
-        address: string,
+        abi?: any,
+        address?: string,
+        chainId?: number,
         confirmations_number?: number,
     ) {
-        // To prevent cross contract interaction.
-        this.contractAddress = address
+        // Either define artifacts by your self or use from deployments with passed chainId.
+        if (chainId) {
+            const deployedArtifacts = _getDeployedContractArtifacts(chainId, 'Token')
+            this.contractAddress = deployedArtifacts.artifacts.address
+            this.abi = deployedArtifacts.artifacts.abi
+        } else {
+            this.contractAddress = address
+            this.abi = abi
+        }
+        // To prevent cross contract interaction and to get web3 instance.
         this.signer = signer
-        this.abi = abi
         this.contract = new ethers.Contract(this.contractAddress, this.abi, signer) as Token;
         this.contract = this.contract.connect(signer)
         this.confirmations_number = confirmations_number

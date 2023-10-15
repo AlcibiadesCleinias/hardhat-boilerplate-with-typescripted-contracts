@@ -1,3 +1,7 @@
+// @deprecated
+// With hardhat-deploy lib this script should be deprecated, since the lib does all
+//  that script does but in more organised manner.
+
 // This is a script for deploying your contracts. You can adapt it to deploy
 // yours, or create new ones.
 
