@@ -1,5 +1,5 @@
 # hardhat-boilerplate-with-typescripted-contracts-artifacts
-Package consists of following artifacts useful for ZkTurk contract interaction:
+Package consists of following artifacts useful for Token contract interaction:
 - `contracts/` - `json` artifacts of the contracts. Useful contract **abi** are here, 
 - `typechain-types/` - typechain-types of all contracts [optional],
 - `frontend-clients` - frontend oriented classes those need only [optional]
